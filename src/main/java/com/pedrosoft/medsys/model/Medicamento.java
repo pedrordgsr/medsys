@@ -25,4 +25,7 @@ public class Medicamento {
     @Enumerated(EnumType.STRING)
     @Column(length = 20,nullable = false)
     private Tipo tipo;
+
+    @ManyToOne
+    private Filial filial;
 }

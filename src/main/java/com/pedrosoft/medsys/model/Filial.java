@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -20,5 +22,11 @@ public class Filial {
 
     @Column(length = 15, nullable = false)
     private String telefone;
+
+    @OneToMany
+    private List<Medicamento> medicamentos;
+
+    @OneToMany
+    private List<Venda> vendas;
 
 }
