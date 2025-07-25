@@ -26,6 +26,7 @@ public class Medicamento {
     @Column(length = 20,nullable = false)
     private Tipo tipo;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "filial_id")
     private Filial filial;
 }

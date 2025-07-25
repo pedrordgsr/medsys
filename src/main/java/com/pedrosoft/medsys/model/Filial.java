@@ -23,10 +23,14 @@ public class Filial {
     @Column(length = 15, nullable = false)
     private String telefone;
 
-    @OneToMany
+    @OneToMany(mappedBy = "filial",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     private List<Medicamento> medicamentos;
 
-    @OneToMany
+    @OneToMany(mappedBy = "filial",
+               cascade = CascadeType.ALL,
+               orphanRemoval = true)
     private List<Venda> vendas;
 
 }

@@ -23,9 +23,11 @@ public class Venda {
     @Column(precision = 10, scale = 2)
     private BigDecimal total;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "filial_id")
     private Filial filial;
 }
