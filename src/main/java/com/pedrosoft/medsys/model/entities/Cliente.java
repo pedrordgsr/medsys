@@ -1,4 +1,4 @@
-package com.pedrosoft.medsys.model;
+package com.pedrosoft.medsys.model.entities;
 
 
 import jakarta.persistence.*;
@@ -27,7 +27,5 @@ public class Cliente {
                 cascade = CascadeType.ALL,
                 orphanRemoval = true)
     private List<Venda> vendas;
-
-
 
 }

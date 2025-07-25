@@ -1,4 +1,4 @@
-package com.pedrosoft.medsys.model;
+package com.pedrosoft.medsys.model.entities;
 
 public enum Tipo {
     COMUM,

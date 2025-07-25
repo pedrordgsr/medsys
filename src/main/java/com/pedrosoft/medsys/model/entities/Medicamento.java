@@ -1,4 +1,4 @@
-package com.pedrosoft.medsys.model;
+package com.pedrosoft.medsys.model.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
