@@ -15,7 +15,7 @@ import java.util.Date;
 public class Venda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(nullable = false)
     private LocalDateTime dataHora;
