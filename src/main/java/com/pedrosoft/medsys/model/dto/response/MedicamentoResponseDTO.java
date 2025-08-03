@@ -1,4 +1,4 @@
-package com.pedrosoft.medsys.model.dto;
+package com.pedrosoft.medsys.model.dto.response;
 
 import com.pedrosoft.medsys.model.entities.Filial;
 import com.pedrosoft.medsys.model.entities.Tipo;
@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MedicamentoDTO {
+public class MedicamentoResponseDTO {
     private Long id;
     private String nome;
     private BigDecimal preco;

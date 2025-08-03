@@ -1,4 +1,4 @@
-package com.pedrosoft.medsys.model.dto;
+package com.pedrosoft.medsys.model.dto.response;
 
 import com.pedrosoft.medsys.model.entities.Medicamento;
 import com.pedrosoft.medsys.model.entities.Venda;
@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class FilialDTO {
+public class FilialResponseDTO {
     private Long id;
     private String endereco;
     private String telefone;

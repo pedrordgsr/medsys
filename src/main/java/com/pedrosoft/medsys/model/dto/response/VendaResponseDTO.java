@@ -1,4 +1,4 @@
-package com.pedrosoft.medsys.model.dto;
+package com.pedrosoft.medsys.model.dto.response;
 
 import com.pedrosoft.medsys.model.entities.Cliente;
 import com.pedrosoft.medsys.model.entities.Filial;
@@ -6,7 +6,7 @@ import com.pedrosoft.medsys.model.entities.Filial;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class VendaDTO {
+public class VendaResponseDTO {
     private Long id;
     private LocalDateTime dataHora;
     private BigDecimal total;
