@@ -62,6 +62,13 @@ public class VendaService {
             item.setValorUnitario(medicamento.getPreco());
             item.setReceita(itemDto.getReceita());
 
+            boolean isControlado = medicamento.getTipo() == Tipo.CONTROLADO;
+
+            if (isControlado && !itemDto.getReceita()) {
+                throw new IllegalArgumentException("Apresentação de receita é obrigatória para o medicamento: " + medicamento.getNome());
+            }
+
+
             venda.getItens().add(item);
 
             BigDecimal subtotal = medicamento.getPreco().multiply(BigDecimal.valueOf(item.getQuantidade()));
