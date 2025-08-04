@@ -16,7 +16,9 @@ public class MedicamentoVenda {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(precision = 10, scale = 2)
     private BigDecimal valorUnitario;
+
     private int quantidade;
 
     @ManyToOne
