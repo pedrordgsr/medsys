@@ -17,11 +17,11 @@ import java.util.List;
 public class VendaRequestDTO {
 
     @Valid
-    @NotBlank
+    @NotNull
     private Long cliente_id;
 
     @Valid
-    @NotBlank
+    @NotNull
     private Long filial_id;
 
     @NotNull

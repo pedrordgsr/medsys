@@ -1,9 +1,13 @@
 package com.pedrosoft.medsys.model.dto.response;
 
 import com.pedrosoft.medsys.model.entities.MedicamentoVenda;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
+@Getter
+@Setter
 public class MedicamentoVendaResponseDTO {
 
     private Long medicamentoId;
@@ -18,6 +22,7 @@ public class MedicamentoVendaResponseDTO {
         this.medicamentoNome = item.getMedicamento().getNome();
         this.valorUnitario = item.getValorUnitario();
         this.quantidade = item.getQuantidade();
+        this.receita = item.isReceita();
         this.subtotal = valorUnitario.multiply(BigDecimal.valueOf(quantidade));
     }
 }

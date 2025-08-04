@@ -60,6 +60,7 @@ public class VendaService {
             item.setMedicamento(medicamento);
             item.setQuantidade(itemDto.getQuantidade());
             item.setValorUnitario(medicamento.getPreco());
+            item.setReceita(itemDto.getReceita());
 
             venda.getItens().add(item);
 
@@ -112,6 +113,7 @@ public class VendaService {
             item.setMedicamento(medicamento);
             item.setQuantidade(itemDto.getQuantidade());
             item.setValorUnitario(medicamento.getPreco());
+            item.setReceita(itemDto.getReceita());
 
             novosItens.add(item);
 

@@ -19,7 +19,11 @@ public class MedicamentoVenda {
     @Column(precision = 10, scale = 2)
     private BigDecimal valorUnitario;
 
+    @Column(nullable = false)
     private int quantidade;
+
+    @Column(nullable = false)
+    private boolean receita;
 
     @ManyToOne
     @JoinColumn(name = "venda_id", nullable = false)

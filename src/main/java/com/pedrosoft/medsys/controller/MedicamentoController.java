@@ -38,9 +38,9 @@ public class MedicamentoController {
     }
 
     @PostMapping
-    public ResponseEntity<?> create (@Valid @RequestBody MedicamentoRequestDTO medicamentoRequestDTO){
+    public ResponseEntity<?> create (@Valid @RequestBody MedicamentoRequestDTO dto){
         try{
-            MedicamentoResponseDTO response = medicamentoService.create(medicamentoRequestDTO);
+            MedicamentoResponseDTO response = medicamentoService.create(dto);
             return ResponseEntity.ok(response);
         }
         catch (IllegalArgumentException e) {

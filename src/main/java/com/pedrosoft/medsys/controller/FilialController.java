@@ -41,9 +41,9 @@ public class FilialController {
     }
 
     @PostMapping
-    public ResponseEntity<?> create (@Valid @RequestBody FilialRequestDTO filialRequestDTO){
+    public ResponseEntity<?> create (@Valid @RequestBody FilialRequestDTO dto){
         try{
-            FilialResponseDTO response = filialService.create(filialRequestDTO);
+            FilialResponseDTO response = filialService.create(dto);
             return ResponseEntity.ok(response);
         }
         catch (IllegalArgumentException e) {

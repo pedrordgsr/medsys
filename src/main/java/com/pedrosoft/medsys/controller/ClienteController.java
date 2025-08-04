@@ -40,9 +40,9 @@ public class ClienteController {
     }
 
     @PostMapping
-    public ResponseEntity<?> create (@Valid @RequestBody ClienteRequestDTO clienteRequestDTO){
+    public ResponseEntity<?> create (@Valid @RequestBody ClienteRequestDTO dto){
         try{
-            ClienteResponseDTO response = clienteService.create(clienteRequestDTO);
+            ClienteResponseDTO response = clienteService.create(dto);
             return ResponseEntity.ok(response);
         }
         catch (IllegalArgumentException e) {

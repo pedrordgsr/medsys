@@ -24,9 +24,6 @@ public class Venda {
     @Column(precision = 10, scale = 2)
     private BigDecimal total;
 
-    @Column(nullable = false)
-    private Boolean temReceita;
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
