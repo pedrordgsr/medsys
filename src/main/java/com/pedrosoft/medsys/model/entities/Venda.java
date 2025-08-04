@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -32,4 +34,7 @@ public class Venda {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "filial_id")
     private Filial filial;
+
+    @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MedicamentoVenda> itens = new ArrayList<>();
 }

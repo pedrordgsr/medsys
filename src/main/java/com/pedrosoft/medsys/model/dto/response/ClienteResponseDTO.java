@@ -21,13 +21,4 @@ public class ClienteResponseDTO {
         this.nome = response.getNome();
         this.cpf = response.getCpf();
     }
-
-    @Override
-    public String toString() {
-        return "Resposta: {" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", cpf='" + cpf + '\'' +
-                '}';
-    }
 }
