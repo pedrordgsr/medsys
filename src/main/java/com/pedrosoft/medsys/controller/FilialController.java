@@ -32,7 +32,7 @@ public class FilialController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getById (@RequestParam Long id){
+    public ResponseEntity<?> getById (@PathVariable Long id){
         try{
             return ResponseEntity.ok(filialService.getById(id));
         } catch (IllegalArgumentException e){
@@ -52,7 +52,7 @@ public class FilialController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update (@Valid @RequestBody FilialRequestDTO dto, @RequestParam Long id){
+    public ResponseEntity<?> update (@Valid @RequestBody FilialRequestDTO dto, @PathVariable Long id){
         try{
             FilialResponseDTO response = filialService.update(id, dto);
             return ResponseEntity.ok(response);
@@ -61,8 +61,8 @@ public class FilialController {
         }
     }
 
-    @DeleteMapping
-    public ResponseEntity<?> delete (@RequestParam Long id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete (@PathVariable Long id){
         try{
             filialService.delete(id);
             return ResponseEntity.ok("Filial id:" + id + " deletada!");

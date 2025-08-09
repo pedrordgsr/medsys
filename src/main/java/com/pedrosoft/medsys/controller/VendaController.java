@@ -27,7 +27,7 @@ public class VendaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getById (@RequestParam Long id){
+    public ResponseEntity<?> getById (@PathVariable Long id){
         try{
             return ResponseEntity.ok(vendaService.getById(id));
         } catch (IllegalArgumentException e){
@@ -47,7 +47,7 @@ public class VendaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update (@Valid @RequestBody VendaRequestDTO dto, @RequestParam Long id){
+    public ResponseEntity<?> update (@Valid @RequestBody VendaRequestDTO dto, @PathVariable Long id){
         try{
             VendaResponseDTO response = vendaService.update(id, dto);
             return ResponseEntity.ok(response);
@@ -56,8 +56,8 @@ public class VendaController {
         }
     }
 
-    @DeleteMapping
-    public ResponseEntity<?> delete (@RequestParam Long id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete (@PathVariable Long id){
         try{
             vendaService.delete(id);
             return ResponseEntity.ok("Venda id:" + id + " deletada!");

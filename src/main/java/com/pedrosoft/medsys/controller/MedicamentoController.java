@@ -29,7 +29,7 @@ public class MedicamentoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getById (@RequestParam Long id){
+    public ResponseEntity<?> getById (@PathVariable Long id){
         try{
             return ResponseEntity.ok(medicamentoService.getById(id));
         } catch (IllegalArgumentException e){
@@ -49,7 +49,7 @@ public class MedicamentoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update (@Valid @RequestBody MedicamentoRequestDTO dto, @RequestParam Long id){
+    public ResponseEntity<?> update (@Valid @RequestBody MedicamentoRequestDTO dto, @PathVariable Long id){
         try{
             MedicamentoResponseDTO response = medicamentoService.update(id, dto);
             return ResponseEntity.ok(response);
@@ -58,8 +58,8 @@ public class MedicamentoController {
         }
     }
 
-    @DeleteMapping
-    public ResponseEntity<?> delete (@RequestParam Long id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete (@PathVariable Long id){
         try{
             medicamentoService.delete(id);
             return ResponseEntity.ok("Medicamento id:" + id + " deletado!");

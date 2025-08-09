@@ -31,7 +31,7 @@ public class ClienteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getById (@RequestParam Long id){
+    public ResponseEntity<?> getById (@PathVariable Long id){
         try{
             return ResponseEntity.ok(clienteService.getById(id));
         } catch (IllegalArgumentException e){
@@ -51,7 +51,7 @@ public class ClienteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update (@Valid @RequestBody ClienteRequestDTO dto, @RequestParam Long id){
+    public ResponseEntity<?> update (@Valid @RequestBody ClienteRequestDTO dto, @PathVariable Long id){
         try{
             ClienteResponseDTO response = clienteService.update(id, dto);
             return ResponseEntity.ok(response);
@@ -60,8 +60,8 @@ public class ClienteController {
         }
     }
 
-    @DeleteMapping
-    public ResponseEntity<?> delete (@RequestParam Long id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete (@PathVariable Long id){
         try{
             clienteService.delete(id);
             return ResponseEntity.ok("Cliente id:" + id + " deletado!");
