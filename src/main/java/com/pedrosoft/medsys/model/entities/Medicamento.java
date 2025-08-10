@@ -24,6 +24,9 @@ public class Medicamento {
     @Column(precision = 10, scale = 2, nullable = false)
     private BigDecimal preco;
 
+    @Column(nullable = false)
+    private int estoque;
+
     @Enumerated(EnumType.STRING)
     @Column(length = 20,nullable = false)
     private Tipo tipo;

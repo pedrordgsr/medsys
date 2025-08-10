@@ -58,6 +58,16 @@ public class MedicamentoController {
         }
     }
 
+    @PostMapping("/estoque/{id}")
+    public ResponseEntity<?> estoque (@PathVariable Long id, @Valid @RequestBody int estoque){
+        try{
+            String response = medicamentoService.atualizaEstoque(id, estoque);
+            return ResponseEntity.ok(response);
+        } catch (IllegalArgumentException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete (@PathVariable Long id){
         try{

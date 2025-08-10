@@ -38,8 +38,9 @@ public class MedicamentoService {
         medicamento.setPreco(dto.getPreco());
         medicamento.setTipo(dto.getTipo());
         medicamento.setFilial(filial);
+        medicamento.setEstoque(0);
 
-        Medicamento response = medicamentoDAO.save(medicamento);
+        medicamentoDAO.save(medicamento);
         return new MedicamentoResponseDTO(medicamento);
     }
 
@@ -69,7 +70,7 @@ public class MedicamentoService {
         medicamento.setTipo(dto.getTipo());
         medicamento.setFilial(filial);
 
-        Medicamento response = medicamentoDAO.save(medicamento);
+        medicamentoDAO.save(medicamento);
         return new MedicamentoResponseDTO(medicamento);
     }
 
@@ -78,5 +79,21 @@ public class MedicamentoService {
             throw new EntityNotFoundException("Medicamento não encontrado com id: " + id);
         }
         medicamentoDAO.deleteById(id);
+    }
+
+    public String atualizaEstoque(Long id, int estoque){
+
+        Medicamento medicamento = medicamentoDAO.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Medicamento não encontrado com id: " + id));
+
+        if (estoque < 0){
+            throw new IllegalArgumentException("Estoque negativo! Informe um valor de estoque positivo.");
+        }
+
+        medicamento.setEstoque(estoque);
+
+        medicamentoDAO.save(medicamento);
+
+        return "Estoque atualizado, quantidade atual do medicamento " + medicamento.getNome() + " é de: " + medicamento.getEstoque() + " unidades.";
     }
 }

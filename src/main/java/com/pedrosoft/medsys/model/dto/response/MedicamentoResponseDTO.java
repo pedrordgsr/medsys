@@ -21,6 +21,7 @@ public class MedicamentoResponseDTO {
         this.nome = medicamento.getNome();
         this.tipo = medicamento.getTipo();
         this.preco = medicamento.getPreco();
+        this.estoque = medicamento.getEstoque();
         this.filial_id = medicamento.getFilial().getId();
     }
 
@@ -29,6 +30,7 @@ public class MedicamentoResponseDTO {
     private BigDecimal preco;
     private Tipo tipo;
     private Long filial_id;
+    private int estoque;
 
 
 }

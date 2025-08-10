@@ -24,16 +24,18 @@ public class VendaService {
     public final MedicamentoDAO medicamentoDAO;
     public final FilialDAO filialDAO;
     public final ClienteDAO clienteDAO;
+    private final MedicamentoService medicamentoService;
 
     @Autowired
     public VendaService(VendaDAO vendaDAO,
                         MedicamentoDAO medicamentoDAO,
                         FilialDAO filialDAO,
-                        ClienteDAO clienteDAO){
+                        ClienteDAO clienteDAO, MedicamentoService medicamentoService){
         this.vendaDAO = vendaDAO;
         this.medicamentoDAO = medicamentoDAO;
         this.filialDAO = filialDAO;
         this.clienteDAO = clienteDAO;
+        this.medicamentoService = medicamentoService;
     }
 
     public VendaResponseDTO create(VendaRequestDTO dto){
@@ -61,8 +63,16 @@ public class VendaService {
             item.setQuantidade(itemDto.getQuantidade());
             item.setValorUnitario(medicamento.getPreco());
             item.setReceita(itemDto.getReceita());
+            int estoque = medicamento.getEstoque() - itemDto.getQuantidade();
 
             boolean isControlado = medicamento.getTipo() == Tipo.CONTROLADO;
+
+            if (estoque < 0){
+                throw new IllegalArgumentException("O medicamento seguinte não possui estoque suficiente: " +
+                        medicamento.getNome() +
+                        ". Quantidade: " + itemDto.getQuantidade() +
+                        ". Estoque: " + medicamento.getEstoque());
+            }
 
             if (isControlado && !itemDto.getReceita()) {
                 throw new IllegalArgumentException("Apresentação de receita é obrigatória para o medicamento: " + medicamento.getNome());
@@ -70,6 +80,8 @@ public class VendaService {
 
 
             venda.getItens().add(item);
+
+            medicamentoService.atualizaEstoque(medicamento.getId(),estoque);
 
             BigDecimal subtotal = medicamento.getPreco().multiply(BigDecimal.valueOf(item.getQuantidade()));
             total = total.add(subtotal);
